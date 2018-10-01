@@ -1,5 +1,7 @@
 html, body {
   margin: Auto;
+  marginTop:200;
+  marginBottom:200;
   padding: 15em;
   border: 5em, double rgb(255, 100, 50);
 }
