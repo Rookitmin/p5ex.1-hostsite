@@ -1,4 +1,5 @@
 html, body {
-  margin: 0;
-  padding: 0;
+  margin: Auto;
+  padding: 15px;
+  border: 5px double rgb(255, 100, 50);
 }
