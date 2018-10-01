@@ -1,5 +1,5 @@
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(1600, 400);
 }
 var xSpeed1=0.1;
 var xSpeed2=0; 
