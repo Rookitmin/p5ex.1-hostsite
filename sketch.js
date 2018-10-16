@@ -1,22 +1,57 @@
 function setup() {
-  createCanvas(1600, 400);
+	createCanvas(400, 400);
+	background("blue");
 }
-var xSpeed1=0.1;
-var xSpeed2=0; 
-var x = 800;
-fill(0,0,0);
+var player = {
+	xPosition = 200
+	yPosition = 200
+	grav = -0.01
+	change = 10
+	colorHelmet = [100, 100, 255]
+	colorBody = [255, 0, 0]
+	costume = 1
+};
+
+var drawPlayer = function (x, y) {
+	fill(player.colorBody);
+	rect(x, y + player.costume, 20, 20);
+	fill(player.colorHelmet);
+	rect(x, player.y + player.costume + 2, 5, 15);
+	fill(player.colorBody);
+	rect(x + 5, y + player.costume + 20, 10, 5 + player.costume);
+	rect(x, y + 25, 20, 30);
+}
+
+var ground = function (y) {
+	colorMode(RGB, 255);
+	noStroke();
+	fill(0, 255, 0);
+	rect(0, y, 400, 15);
+	fill(65, 60, 45);
+	rect(0, y + 15, 400, 100000);
+}
+
 function draw() {
-  background(220);
-	ellipse(mouseX - 5,mouseY - 5,10,10);
-	ellipse(x,200,5,5);
-	xSpeed2 += xSpeed1;
-	x += xSpeed2;
-	if (x > 1450) {
-		xSpeed1 = -0.1;
-		fill(mouseX,mouseY,x);
+	background("blue");
+	ground(300);
+	if (player.y < 255) {
+		player.y += player.change;
+		player.change += player.grav;
+		drawPlayer(player.x, player.y);
+	} 
+	else if (keyCode = 38) {
+		player.y -= 10;
+		player.change = 10;
+		player.grav = -0.01;
+		drawPlayer(player.x, player.y);
+		player.y -= 10;
+		player.change = 10;
+		player.grav = -0.01;
+		drawPlayer(player.x, player.y);
 	}
-	if (x < 150) {
-		xSpeed1 = 0.1;
-		fill(mouseY,mouseX,x);
+	else {
+		player.y = 305;
+		player.grav = 0;
+		drawPlayer(player.x, player.y);
 	}
 }
